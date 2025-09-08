@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Mes Commandes</h2>
+
+{% if orders %}
+  <ul class="list-group">
+    {% for order in orders %}
+      <li class="list-group-item">
+        {{ order.product.name }} (x{{ order.quantity }}) -
+        Commandé le {{ order.ordered_date }}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>Vous n'avez encore passé aucune commande.</p>
+{% endif %}
+<a href="/" class="btn btn-primary">Retour à l'accueil</a>
+{% endblock %}

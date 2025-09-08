@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>✅ Paiement réussi !</h2>
+<p>Merci pour votre commande 🎉</p>
+<a href="{% url 'my_orders' %}" class="btn btn-success">Voir mes commandes</a>
+<a href="/" class="btn btn-primary">Retour à l'accueil</a>
+{% endblock %}

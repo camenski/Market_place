@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5" style="max-width: 400px;">
+    <div class="card shadow-sm p-4">
+        <h2 class="text-center mb-4">Connexion</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+            
+            <!-- Nom d'utilisateur -->
+            <div class="mb-3">
+                <label for="username" class="form-label">Nom d'utilisateur</label>
+                <input id="username" type="text" name="username" class="form-control" placeholder="Entrez votre nom d'utilisateur" required>
+            </div>
+
+            <!-- Mot de passe -->
+            <div class="mb-3">
+                <label for="password" class="form-label">Mot de passe</label>
+                <input id="password" type="password" name="password" class="form-control" placeholder="Entrez votre mot de passe" required>
+            </div>
+
+            <!-- Bouton de connexion -->
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+            </div>
+        </form>
+
+        <!-- Lien vers l'inscription -->
+        <p class="text-center mt-3">
+            Pas encore de compte ? <a href="{% url 'signup' %}">Inscrivez-vous</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

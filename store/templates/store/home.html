@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1>Bienvenue sur AthletiQ🏋️ </h1>
+  <p>Votre marketplace pour le sport, la santé et le bien-être.</p>
+
+  <h1 class="mb-4 text-center">🏆 Produits Vedette</h1>
+  <div class="row">
+    {% for product in featured_products %}
+      <div class="col-md-3">
+        <div class="card shadow-sm mb-4">
+          <img src="{{ product.thumbnail.url }}" class="card-img-top" alt="{{ product.name }}">
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.price }} $</p>
+            <a href="{% url 'product_detail' product.slug %}" class="btn btn-primary">Voir</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center">Aucun produit vedette disponible.</p>
+    {% endfor %}
+  </div>
+
+  <!-- Section Produits Populaires -->
+  <h2 class="mt-5 mb-4 text-center">🔥 Produits Populaires</h2>
+  <div class="row">
+    {% for product in popular_products %}
+      <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+          <img src="{{ product.thumbnail.url }}" class="card-img-top" alt="{{ product.name }}">
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.price }} $</p>
+            <a href="{% url 'product_detail' product.slug %}" class="btn btn-outline-primary">Voir</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center">Aucun produit populaire disponible.</p>
+    {% endfor %}
+  </div>
+
+  <a href="{% url 'index' %}" class="btn btn-primary">Voir les produits</a>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Finaliser ma commande</h2>
+  <p>Total : <strong>{{ total_amount }} $</strong></p>
+  
+  <form method="post">
+    {% csrf_token %}
+    
+  
+  <div class="form-deli" style="margin-top: 15px; display: flex; flex-direction: column;">
+    <label style="font: bold; font-size: 18px;">Adresse de livraison: </label>
+    <input type="text" id="delivery" required style="height: 41px; margin-top: 12px; border-radius: 6px; border-color: rgba(131, 131, 131, 0.794);  ">
+  </div>
+  
+  <div class="selection" style="margin-top: 21px; display: flex; flex-direction: row; gap: 8px;"  >
+    <label for="cities" style="font: bold; font-size: 18px;">Location:</label>
+    <select name="cities" id="cities" style="width: 40%;"> 
+      <option value="abidjan" selected> Abidjan</option>
+      <option value="yamoussoukro">Yamoussoukro</option>
+      <option value="Bouaké">Bouaké</option>
+      <option value="san-pédro">San-pédro</option>
+      <option value="grand-Bassam">Grand-Bassam</option>
+  
+    </select>
+  </div>
+  
+  <div class="form-post" style="margin-top: 15px; display: flex; flex-direction: column;">
+    <label for="Postal Code" style="font: bold; font-size: 18px;" >Postal Code</label>
+    <input type="tel" required id="postal" pattern="[0-9]{5}" style="height: 31px; margin-top: 12px; border-radius: 6px; border-color: rgba(131, 131, 131, 0.794);    width: 20% ; ">
+  </div>
+  
+  <div class="form-group mt-3">
+    <label for="phone_number">Numéro de téléphone :</label>
+    <input type="tel" name="phone_number" id="phone_number" class="form-control" required>
+  </div>
+  
+  <div class="form-group mt-3">
+      <label>Méthode de paiement :</label><br>
+      <input type="radio" name="payment_method" value="cod" required> Paiement à la livraison <br>
+      <input type="radio" name="payment_method" value="stripe" required> Paiement en ligne (Stripe)
+  </div>
+  
+  
+  <button type="submit" class="btn btn-success mt-3">Valider la commande</button>
+  </form>
+  
+  {% if error %}
+    <p style="color: red;">Erreur : {{ error }}</p>
+  {% endif %}
+
+
+{% endblock %}

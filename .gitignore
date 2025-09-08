@@ -1,0 +1,18 @@
+# Environnements virtuels
+env/
+venv/
+
+# Django files
+*.pyc
+__pycache__/
+*.log
+db.sqlite3
+
+# Config/OS
+.DS_Store
+
+# IDE / éditeurs
+.vscode/
+.idea/
+
+.env
