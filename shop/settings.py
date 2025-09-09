@@ -130,10 +130,10 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 AUTH_USER_MODEL = "accounts.Shopper"
 
+DEBUG = config("DEBUG", default=False, cast=bool)
 
-
-#ajouter les clé privés et publics stripe ici
-
+STRIPE_PUBLIC_KEY = config("STRIPE_PUBLIC_KEY")
+STRIPE_SECRET_KEY = config("STRIPE_SECRET_KEY")
 
 
 

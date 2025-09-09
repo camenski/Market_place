@@ -15,4 +15,6 @@ db.sqlite3
 .vscode/
 .idea/
 
+
+# Ignore environment files
 .env
