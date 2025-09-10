@@ -18,6 +18,8 @@ from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -132,7 +134,7 @@ AUTH_USER_MODEL = "accounts.Shopper"
 
 DEBUG = config("DEBUG", default=False, cast=bool)
 
-STRIPE_PUBLIC_KEY = config("STRIPE_PUBLIC_KEY")
+STRIPE_PUBLIC_KEY = config("STRIPE_PUBLISHABLE_KEY")
 STRIPE_SECRET_KEY = config("STRIPE_SECRET_KEY")
 
 
