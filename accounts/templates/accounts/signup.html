@@ -5,6 +5,12 @@
     <div class="card shadow-sm p-4">
         <h2 class="text-center mb-4">Inscription</h2>
 
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+
         <form method="POST">
             {% csrf_token %}
 

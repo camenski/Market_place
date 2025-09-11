@@ -11,8 +11,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-import os
 from decouple import config
+import os
+
 
 
 
@@ -26,10 +27,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-o0s@ivn(=l%#%f_qwjc6yp^f%rha84l1geqh(#cg^t%+m+sqf9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
 
 ALLOWED_HOSTS = []
 
@@ -132,9 +132,10 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 AUTH_USER_MODEL = "accounts.Shopper"
 
+SECRET_KEY = config("SECRET_KEY", default="fallback-secret-key")
 DEBUG = config("DEBUG", default=False, cast=bool)
 
-STRIPE_PUBLIC_KEY = config("STRIPE_PUBLISHABLE_KEY")
+STRIPE_PUBLISHABLE_KEY = config("STRIPE_PUBLISHABLE_KEY")
 STRIPE_SECRET_KEY = config("STRIPE_SECRET_KEY")
 
 
